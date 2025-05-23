@@ -154,3 +154,5 @@ Si no hay cambios, puedes hacer pull y terminar. Si hay cambios, primero haz pul
 =======
 un cambio
 >>>>>>> refs/remotes/origin/main
+=======
+>>>>>>> origin/main
