@@ -1,5 +1,6 @@
 # analisis-matrices-primas
 
+<<<<<<< HEAD
 
 ## Primeros pasos
 
@@ -152,3 +153,6 @@ Si no hay cambios, puedes hacer pull y terminar. Si hay cambios, primero haz pul
 ```
 
 
+=======
+un cambio
+>>>>>>> refs/remotes/origin/main
