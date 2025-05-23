@@ -1,7 +1,5 @@
 # analisis-matrices-primas
 
-<<<<<<< HEAD
-
 ## Primeros pasos
 
 Este repositorio utiliza **micromamba** para gestionar un entorno de R aislado, sin necesidad de instalar R globalmente.
