@@ -149,10 +149,3 @@ Si no hay cambios, puedes hacer pull y terminar. Si hay cambios, primero haz pul
 ```bash
 ./sync_env.sh
 ```
-
-
-=======
-un cambio
->>>>>>> refs/remotes/origin/main
-=======
->>>>>>> origin/main
