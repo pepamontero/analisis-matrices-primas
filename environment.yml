@@ -100,12 +100,14 @@ dependencies:
   - r-diffobj=0.3.6
   - r-digest=0.6.37
   - r-downlit=0.4.4
+  - r-dplyr=1.1.4
   - r-ellipsis=0.3.2
   - r-evaluate=1.0.3
   - r-fansi=1.0.6
   - r-fastmap=1.2.0
   - r-fontawesome=0.5.3
   - r-fs=1.6.6
+  - r-generics=0.1.4
   - r-gert=2.1.4
   - r-gh=1.4.1
   - r-gitcreds=0.1.2
@@ -163,6 +165,7 @@ dependencies:
   - r-testthat=3.2.3
   - r-textshaping=1.0.1
   - r-tibble=3.2.1
+  - r-tidyselect=1.2.1
   - r-tinytex=0.57
   - r-urlchecker=1.0.1
   - r-usethis=3.1.0
