@@ -119,7 +119,7 @@ Si quieres añadir (o eliminar) paquetes al entorno, y quieres publicar estos ca
 
 ```bash
 micromamba activate r-env
-micromamba env export --no-builds | grep -v "prefix:" > environment.yml`
+micromamba env export --no-builds | grep -v "prefix:" > environment.yml
 ```
 
 Si utilizas este nombre, se reescribirá automaticamente. Después puedes publicar los cambios con `git push`.
