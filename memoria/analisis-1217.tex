@@ -1,0 +1,248 @@
+% Preamble
+
+\definecolor{lightblue}{RGB}{100, 150, 230}
+\definecolor{mutedred}{RGB}{180, 60, 60}
+\newcommand{\red}[1]{\textbf{\textcolor{mutedred}{#1}}}
+\newcommand{\blue}[1]{\textbf{\textcolor{lightblue}{#1}}}
+
+\newcommand{\question}[1]{\noindent\hspace*{1em}\textbf{#1}}
+
+%%%%%%%%%%%%
+
+
+\subsection{Análisis de matrices con centro fijo}
+
+La idea es analizar matrices con un centro fijo y hacernos una serie de preguntas. A partir de las respuestas que encontremos para un centro concreto, analizar si se obtienen los mismos resultados (o resultados equivalentes) para otro.
+
+Algunas de las preguntas que se plantean al principio son:
+
+\begin{itemize}
+    \item ¿Cuál es la proporción de matrices primas frente a no primas?
+    \item ¿Hay primos que aparecen más que otros? ¿Hay primos que aparecen más en las esquinas (o más en las aristas)? ¿Hay primos que son más versátiles?
+    \item La relación entre los primos y sus posiciones más comunes, ¿se mantiene en las matrices no primas?
+    \item ¿Hay primos que aparecen en las matrices primas, que no aparecen en las no primas? ¿Y viceversa?
+\end{itemize}
+
+\subsubsection{Análisis de matrices con centro 1217}
+
+Contamos con una tabla con los datos de todas las matrices de tamaño $3\times3$ (primas y no primas) con centro 1217 y distancias $d_1 < d_2$ que son múltiplos de 6.
+
+Lo primero que observamos es que existen 10033 matrices que cumplen estas condiciones (salvo transformaciones), de las cuales 10 son primas.
+
+Estas 10 matrices primas son las siguientes:
+
+$$
+\begin{array}{c@{\vspace{0.2cm}}@{\hspace{0.2cm}}c@{\vspace{0.2cm}}@{\hspace{0.2cm}}c}
+\begin{pmatrix}1061 & 2243 & 347 \\ 503 & 1217 & 1931 \\ 2087 & 191 & 1373\end{pmatrix} &
+\begin{pmatrix}1061 & 2393 & 197 \\ 353 & 1217 & 2081 \\ 2237 & 41 & 1373\end{pmatrix} &
+\begin{pmatrix}983 & 2081 & 587 \\ 821 & 1217 & 1613 \\ 1847 & 353 & 1451\end{pmatrix} \\
+\begin{pmatrix}953 & 2141 & 557 \\ 821 & 1217 & 1613 \\ 1877 & 293 & 1481\end{pmatrix} &
+\begin{pmatrix}947 & 2411 & 293 \\ 563 & 1217 & 1871 \\ 2141 & 23 & 1487\end{pmatrix} &
+\begin{pmatrix}827 & 2267 & 557 \\ 947 & 1217 & 1487 \\ 1877 & 167 & 1607\end{pmatrix} \\
+\begin{pmatrix}827 & 2393 & 431 \\ 821 & 1217 & 1613 \\ 2003 & 41 & 1607\end{pmatrix} &
+\begin{pmatrix}821 & 2243 & 587 \\ 983 & 1217 & 1451 \\ 1847 & 191 & 1613\end{pmatrix} &
+\begin{pmatrix}797 & 2333 & 521 \\ 941 & 1217 & 1493 \\ 1913 & 101 & 1637\end{pmatrix} \\
+ & 
+\begin{pmatrix}797 & 2393 & 461 \\ 881 & 1217 & 1553 \\ 1973 & 41 & 1637 \end{pmatrix} &
+\end{array}
+$$
+
+En primer lugar podemos hacer las siguientes observaciones:
+\begin{itemize}
+    \item Aparecen 405 números distintos en todas las matrices.
+    \item De estos 405 números, 183 son primos (uno de los cuales es el centro)
+    \item En las matrices primas, aparecen 50 primos distintos, todos ellos apareciendo también en matrices no primas.
+\end{itemize}
+
+La pregunta aquí es: ¿podemos encontrar una condición que satisfacen estas 10 matrices, que las otras 10023 no cumplan?
+
+En particular, fijándonos en los primos que aparecen en las matrices primas, ¿tienen alguna relación entre sí? ¿o con sus posiciones en la matriz? ¿Qué relación tienen con el primo central que los otros 133 primos no tienen?
+
+\newpage
+\question{Q: ¿Las posiciones de los primos en las matrices primas son las mismas que toman en las matrices no primas?}
+
+\begin{table}[ht]
+  \centering
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \caption{Matrices primas}
+    \begin{tabular}{|rr|rrrr|}
+    \hline
+    p1 & p2 & diag1 & diag2 & hor & ver \\ 
+    \hline
+    23 & 2411 &   0 &   0 &   0 &   \blue{1} \\ 
+    41 & 2393 &   0 &   0 &   0 &   \blue{3} \\ 
+    101 & 2333 &   0 &   0 &   0 &   \blue{1} \\ 
+    167 & 2267 &   0 &   0 &   0 &   \blue{1} \\ 
+    191 & 2243 &   0 &   0 &   0 &   \blue{2} \\ 
+    197 & 2237 &   0 &   \red{1} &   0 &   0 \\ 
+    293 & 2141 &   0 &   \blue{1} &   0 &   \blue{1} \\ 
+    347 & 2087 &   0 &   \blue{1} &   0 &   0 \\ 
+    353 & 2081 &   0 &   0 &   \red{1} &   \blue{1} \\ 
+    431 & 2003 &   0 &   \blue{1} &   0 &   0 \\ 
+    461 & 1973 &   0 &   \blue{1} &   0 &   0 \\ 
+    503 & 1931 &   0 &   0 &   \red{1} &   0 \\ 
+    521 & 1913 &   0 &   \blue{1} &   0 &   0 \\ 
+    557 & 1877 &   0 &   \blue{2} &   0 &   0 \\ 
+    563 & 1871 &   0 &   0 &   \red{1} &   0 \\ 
+    587 & 1847 &   0 &   \blue{2} &   0 &   0 \\ 
+    797 & 1637 &   \red{2} &   0 &   0 &   0 \\ 
+    821 & 1613 &   \blue{1} &   0 &   \red{3} &   0 \\ 
+    827 & 1607 &   \red{2} &   0 &   0 &   0 \\ 
+    881 & 1553 &   0 &   0 &   \red{1} &   0 \\ 
+    941 & 1493 &   0 &   0 &   \red{1} &   0 \\ 
+    947 & 1487 &   \blue{1} &   0 &   \blue{1} &   0 \\ 
+    953 & 1481 &   \blue{1} &   0 &   0 &   0 \\ 
+    983 & 1451 &   \blue{1} &   0 &   \blue{1} &   0 \\ 
+    1061 & 1373 &   \blue{2} &   0 &   0 &   0 \\ 
+    \hline
+     & TOTAL &   10 &   10 &   10 &   10 \\
+    \hline
+    \end{tabular}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \caption{Matrices no primas}
+    \begin{tabular}{rrrr|}
+    \hline
+    diag1 & diag2 & hor & ver \\ 
+    \hline
+    0 &   3 &   1 &  \blue{98} \\ 
+    0 &   6 &   3 &  \blue{94} \\ 
+    0 &  16 &   8 &  \blue{90} \\ 
+    0 &  27 &  13 &  \blue{86} \\ 
+    0 &  31 &  15 &  \blue{82} \\ 
+    0 &  \red{31} &  16 &  84 \\ 
+    0 &  \blue{47} &  24 &  \blue{75}\\ 
+    0 &  \blue{56} &  28 &  72 \\ 
+    0 &  58 &  \red{28} &  \blue{69} \\ 
+    0 &  \blue{70} &  35 &  65 \\ 
+    0 &  \blue{74} &  38 &  61 \\ 
+    0 &  83 &  \red{40} &  59 \\ 
+    0 &  \blue{84} &  43 &  57 \\ 
+    0 &  \blue{89} &  46 &  54 \\ 
+    0 &  93 &  \red{45} &  54 \\ 
+    0 &  \blue{95} &  48 &  51 \\ 
+    \red{60} &  68 &  66 &  34 \\ 
+    \blue{68} &  64 &  \red{64} &  31 \\ 
+    \red{69} &  64 &  67 &  32 \\ 
+    89 &  54 &  \red{71} &  27 \\ 
+    109 &  44 &  \red{76} &  22 \\ 
+    \blue{110} &  44 &  \blue{76} &  21 \\ 
+    \blue{112} &  42 &  78 &  21 \\ 
+    \blue{122} &  38 &  \blue{79} &  18 \\ 
+    \blue{147} &  24 &  87 &  12 \\ 
+    \hline
+    886 &   1305 &  1095 &   1369 \\
+    \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+
+Hay bastantes casos en los que coinciden las posiciones de las parejas: por ejemplo, la pareja primera pareja (23, 2411) sólo aparece en una matriz prima, y en esa matriz aparece en la posición vertical. Si nos fijamos en las matrices primas, coincide con que la mayoría de las matrices no primas también tienen este par en esa posición.
+
+Sin embargo, esto no ocurre en \textit{todas} las parejas. Hemos señalado en rojo los casos en los que esto no ocurre.
+
+Para visualizar mejor esto, construimos una nueva tabla de la siguiente forma: primero normalizamos ambas tablas dividiendo por el número total de matrices por fila (ej. en la fila 2 dividimos por 3 en la primera table y por 103 en la segunda). Después restamos ambas tablas. Marcamos aquellos resultados con diferencias mayores que 0.5.
+
+\begin{table}[ht]
+\centering
+\(\)
+\begin{tabular}{|rr|rrrr|}
+  \hline
+p1 & p2 & diag1 & diag2 & hor & ver \\ 
+  \hline
+ 23 & 2411 & 0.00 & -0.03 & -0.01 & 0.04 \\ 
+   41 & 2393 & 0.00 & -0.06 & -0.03 & 0.09 \\ 
+  101 & 2333 & 0.00 & -0.14 & -0.07 & 0.21 \\ 
+  167 & 2267 & 0.00 & -0.21 & -0.10 & 0.32 \\ 
+  191 & 2243 & 0.00 & -0.24 & -0.12 & 0.36 \\ 
+  197 & 2237 & 0.00 & \red{0.76} & -0.12 & \red{-0.64} \\ 
+  293 & 2141 & 0.00 & 0.18 & -0.16 & -0.01 \\ 
+  347 & 2087 & 0.00 & \red{0.64} & -0.18 & -0.46 \\ 
+  353 & 2081 & 0.00 & -0.37 & 0.32 & 0.05 \\ 
+  431 & 2003 & 0.00 & \red{0.59} & -0.21 & -0.38 \\ 
+  461 & 1973 & 0.00 & \red{0.57} & -0.22 & -0.35 \\ 
+  503 & 1931 & 0.00 & -0.46 & \red{0.78} & -0.32 \\ 
+  521 & 1913 & 0.00 & \red{0.54} & -0.23 & -0.31 \\ 
+  557 & 1877 & 0.00 & \red{0.53} & -0.24 & -0.29 \\ 
+  563 & 1871 & 0.00 & -0.48 & \red{0.77} & -0.28 \\ 
+  587 & 1847 & 0.00 & \red{0.51} & -0.25 & -0.26 \\ 
+  797 & 1637 & \red{0.74} & -0.30 & -0.29 & -0.15 \\ 
+  821 & 1613 & -0.05 & -0.28 & 0.47 & -0.14 \\ 
+  827 & 1607 & \red{0.70} & -0.28 & -0.29 & -0.14 \\ 
+  881 & 1553 & -0.37 & -0.22 & \red{0.71} & -0.11 \\ 
+  941 & 1493 & -0.43 & -0.18 & \red{0.70} & -0.09 \\ 
+  947 & 1487 & 0.06 & -0.18 & 0.20 & -0.08 \\ 
+  953 & 1481 & \red{0.56} & -0.17 & -0.31 & -0.08 \\ 
+  983 & 1451 & 0.03 & -0.15 & 0.19 & -0.07 \\ 
+  1061 & 1373 & 0.46 & -0.09 & -0.32 & -0.04 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+¡Esto ocurre en más de la mitad de las parejas!
+
+¿Podría querer decir que hay posiciones para ciertas parejas de primos que son mejores a la hora de construir matrices primas?
+
+Habría que repetir el análisis en otros centros para ver si existe algún patrón que se repite.
+
+\newpage
+\question{Q: ¿Qué cosas tienen en común los primos que aparecen en las matrices primas? ¿En qué se diferencian de los primos que no aparecen?}
+
+
+Encontramos que hay 145 pares de primos, de los cuales sólo 25 aparecen en matrices primas. ¿Hay alguna forma en la que se relacionan?
+
+Consideremos el suceso $P$ = El par $(p_1, p_2)$ aparece en alguna matriz prima.
+
+Consideremos el suceso $A$ = El par $(p_1, p_2)$ aparece en menos de 258 matrices y aparece en la diagonal principal más de 101 veces. Encontramos que hay sólo 7 pares que cumplen esta condición, con 4 de ellos apareciendo en matrices primas y 3 no.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|r|rr|}
+  \hline
+ & FALSE & TRUE \\ 
+  \hline
+FALSE & 117 &  21 \\ 
+  TRUE &   3 &   4 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+Sin embargo, de los 138 pares que no lo cumplen, 117 no son primas. Es decir:
+
+$$P(\lnot P | \lnot A) = \frac{P(\lnot P \cup \lnot A)}{P(\lnot A)}$$
+
+$$P(\lnot A) = \frac{favorables}{posibles} = \frac{138}{145} = 0.95$$
+
+$$P(\lnot P \cup \lnot A) = \frac{117}{145} = 0.81 $$
+
+$$P(\lnot P | \lnot A) = \frac{0.81}{0.95} = 0.85$$
+
+Yo interpreto: supongamos que tenemos una matriz, formada por 4 pares. Vemos cuantos de esos pares cumplen $A$. Si pocos cumplen $A$ (por ejemplo ninguno o solo 1), es bastante probable que la matriz no sea prima.
+
+Habría que repetir todo esto para valores distintos de $C$, para ver qué cambia.
+
+Otras cosas:
+
+Encontramos una correlación de 1 con que la diagonal principal aparezca más de 101 veces vs. que la horizontal aparezca más de 75 veces (quee).
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|r|rr|}
+  \hline
+ & FALSE & TRUE \\ 
+  \hline
+FALSE & 108 &   0 \\ 
+  TRUE &   0 &  37 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+Por tanto estas dos condiciones son completamente intercambiables.
+
+
+\newpage
+\question{Sobre los totales en las tablas 1 y 2: por qué?}

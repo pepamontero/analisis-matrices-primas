@@ -5,6 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{xcolor} % Color in text
 
 \usepackage[spanish]{babel}
 
@@ -13,8 +14,8 @@
 \setlength{\parskip}{.8em}
 
 % Título
-\title{Titulo}
-\author{Autor}
+\title{Análisis estadístico de estructuras de números primos}
+\author{Jardineros}
 \date{}
 
 
@@ -23,8 +24,50 @@
 
 \maketitle
 
-holi
+\section{Introducción}
 
+
+
+\subsection{Motivación}
+
+
+
+\subsection{Herramientas}
+
+\begin{itemize}
+    \item R, RStudio para el análisis estadístico
+    \item Python y Go generación de datos + python csv datos
+    \item Micromamba para el entorno
+\end{itemize}
+
+\subsection{Generación de datos}
+
+Breve explicación de cómo se han obtenido los datos.
+
+Aquí estaría bien decir si los algoritmos son exhaustivos o no, eso es importante.
+
+Nota: esta sección quizás sea necesaria ponerla específicamente como subsección dentro de cada sección si es demasiado extensa y/o los datos para distintas secciones se generan de maneras muy distintas o aisladas.
+
+\section{Análisis de tripletas}
+
+\section{Análisis de matrices 3x3}
+
+\subsection{Distancias en la diagonal no principal}
+
+Sinceramente no se por qué lo he hecho con la diagonal no principal. Tenemos matrices de la forma
+
+$$
+\begin{pmatrix}
+    a_{00} & a_{01} & a_{02} \\
+    a_{10} & a_{11} & a_{12} \\
+    a_{20} & a_{21} & a_{22} \\
+\end{pmatrix}
+$$
+
+Básicamente tengo una tabla con 10 columnas: las 9 entradas de la matriz y la distancia de las tripletas $(a_{02}, a_{11}, a_{20})$, $(a_{01}, a_{10}, a_{22})$ y $(a_{12}, a_{21}, a_{00})$. 
+
+
+\input{analisis-1217.tex}
 
 % Bibliografía
 
